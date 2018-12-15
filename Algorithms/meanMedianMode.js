@@ -59,3 +59,54 @@ function getMode(array) {
  
  
 meanMedianMode([9,10,23,10,23,9]);
+
+
+//****************8
+//****************8
+//****************8
+//****************8
+
+function meanMedianMode(arr) {
+  let averages = {};
+  averages.mean = getMean(arr);
+  averages.median = getMedian(arr);
+  averages.mode = getMode(arr);
+  return averages
+}
+
+function getMean(arr) {
+  return (arr.reduce((curr, sum) => {
+    return curr + sum;
+  }, 0) / arr.length);
+}
+
+function getMedian(arr) {
+  arr.sort();
+  if(arr.length % 2 === 0)  {
+    let leftMedian = Math.floor(arr.length / 2) - 1;
+    let rightMedian = Math.floor(arr.length / 2);
+    return (leftMedian + rightMedian) / 2
+  } else {
+  return Math.floor(arr.length / 2)
+  }
+}
+
+function getMode(arr) {
+  let numberOccurences = {};
+  arr.forEach((num) => {
+    if(!numberOccurences[num]) numberOccurences[num] = 0;
+    numberOccurences[num]++
+  });
+  let modes = [];
+  for(let arrayVal in numberOccurences) {
+    if(!modes.length) modes.push(arrayVal);
+    else {
+      if(numberOccurences[arrayVal] > numberOccurences[modes[0]]) modes = [arrayVal];
+      else if(numberOccurences[arrayVal] === numberOccurences[modes[0]]) modes.push(arrayVal)
+    }
+  }
+  return modes
+}
+
+
+console.log(meanMedianMode([1,1,1,1,3,4,3,5,6,7,8,4,6,7,5,9,9,9,9,8]))

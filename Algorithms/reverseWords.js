@@ -14,3 +14,13 @@ function reverseWords(string) {
 }
  
 reverseWords('Coding JavaScript');
+
+//*************************
+//*************************
+//*************************
+//*************************
+function reverseWords(string) {
+  return string.split(' ').map((word) => word.split('').reverse().join('')).join(' ');
+}
+
+console.log(reverseWords("123 abc xyz"));
