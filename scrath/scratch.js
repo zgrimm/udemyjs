@@ -1,10 +1,5 @@
-function myFunc() {
-	this.count = this.count || 0;
-	this.count++;
-    return this.count;
-}
-
-console.log(myFunc());
-console.log(myFunc());
-console.log(myFunc());
-console.log('global.count', global.count);
+let a = {name: 'POO'};
+let b = {};
+b[a] = 'test';
+console.log(a.toString());
+console.log(typeof a.toString());
